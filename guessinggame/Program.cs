@@ -7,7 +7,7 @@ namespace guessinggame
     //normally the same as the .cs file.
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {   
             //logging line 13 and 14 
             Console.WriteLine("Welcome to Guess the Secret Number! Do you want to play?");
@@ -16,6 +16,17 @@ namespace guessinggame
             string num = Console.ReadLine();
             //pulling the response number for use in {}...
             Console.WriteLine($"You answered {num}.... Let's see if you're correct.");
+            //string secret instead of "int" because you can't compare a string to an integer in the if statement...
+            string secret = "42";
+            //comparing response to the secret number.... If the same answer then yay... if not the same.. wrong... 
+            if (num == secret) 
+            {
+                Console.WriteLine("Y A Y !!! You got it correct!");
+            } 
+            else 
+            {
+                Console.WriteLine("Wrong. Do better.");
+            }
         }
     }
 }
