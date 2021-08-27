@@ -14,7 +14,7 @@ namespace guessinggame
         static void Main(string[] args)
         {   
             int secretNum = new Random().Next(1,101);
-            Console.WriteLine(secretNum);
+        
             
             for (int i = 4; i > 0; i--)
             {
