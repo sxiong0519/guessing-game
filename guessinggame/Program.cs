@@ -1,10 +1,6 @@
 ﻿// The program should be updated to...
 
-// Prompt the user for a difficulty level before they are prompted to guess the number.
-// The difficulty level should determine how many guesses the user gets. The difficulty levels should be:
-// Easy - this gives the user eight guesses.
-// Medium - this gives the user six guesses.
-// Hard - this gives the user four guesses.
+// Add a difficulty level of "Cheater" which will cause the program to continue prompting the user until they get the answer correct.
 
 using System;
 
@@ -17,41 +13,69 @@ namespace guessinggame
     {
         static void Main(string[] args)
         {   
+             Console.WriteLine("Welcome to Guess the Secret Number!");
+            //identifying secretnum as a random number between 1-101 (100 exclusive)
             int secretNum = new Random().Next(1,101);
-            Console.WriteLine("How difficult would you like this to be? 1-Easy, 2-Medium, 3-Hard");
+            //prompting question(writeline) and listening(readline) for the difficulty level which gets logged in difficulty level
+            Console.WriteLine("How difficult would you like this to be? 1-Easy, 2-Medium, 3-Hard, 4-CHEATER!");
             int difficultyLevel = int.Parse(Console.ReadLine()); 
-
-            int[] guesses = new int[] {10, 5, 3}; 
-
-            for (int i = guesses[(difficultyLevel - 1)]; i > 0; i--)
+            //if user picks cheater level... provide unlimited guesses with no for loop. "while" loop given when parameter is true
+            if (difficultyLevel == 4)
             {
-                Console.WriteLine("Welcome to Guess the Secret Number!");
-                if (i > 1)
+                while (true) 
                 {
-                    Console.WriteLine($"You have {i} guesses... Guess!");
-                } else 
-                {
-                    Console.WriteLine($"Final Guess...");
-                }
-                //variable "num" is identified as an integer class... therefore must parse int console.readline since readline always comes back as a string
-                int num = int.Parse(Console.ReadLine()); 
+                    Console.WriteLine("YOU GET UNLIMITED GUESSES!!!! Go for it!");
+                    int num = int.Parse(Console.ReadLine()); 
             //comparing response to the secret number.... If the same answer then yay... if not the same.. wrong... 
-                if (num == secretNum) 
-                {
-                    Console.WriteLine("Y A Y !!! You got it correct!");
-                    break;
-                } 
-                else if (num > secretNum)
-                {
-                    Console.WriteLine("Too High!!");
+                    if (num == secretNum) 
+                    {
+                        Console.WriteLine("Y A Y !!! You got it correct!");
+                        break;
+                    } 
+                    else if (num > secretNum)
+                    {
+                        Console.WriteLine("Too High!!");
+                    }
+                    else 
+                    {
+                        Console.WriteLine("Too Low!!");
+                    }
                 }
-                else 
+            }
+            else 
+            {
+                //created #ofguesses array to fit the narrative tasks... 
+                int[] guesses = new int[] {8, 6, 4}; 
+                //when difficulty level is chosen (1, 2, 3) the number logged in difficulty level then gets subtracted with 1...
+                //which in return provides the index# for the guesses array to locate the #of guesses to provide
+                for (int i = guesses[(difficultyLevel - 1)]; i > 0; i--)
                 {
-                    Console.WriteLine("Too Low!!");
-                }
-            }        
+                    if (i > 1)
+                    {
+                        Console.WriteLine($"You have {i} guesses... Guess!");
+                    } else 
+                    {
+                        Console.WriteLine($"Final Guess...");
+                    }
+                    //variable "num" is identified as an integer class... therefore must parse int console.readline since readline always comes back as a string
+                    int num = int.Parse(Console.ReadLine()); 
+                //comparing response to the secret number.... If the same answer then yay... if not the same.. wrong... 
+                    if (num == secretNum) 
+                    {
+                        Console.WriteLine("Y A Y !!! You got it correct!");
+                        break;
+                    } 
+                    else if (num > secretNum)
+                    {
+                        Console.WriteLine("Too High!!");
+                    }
+                    else 
+                    {
+                        Console.WriteLine("Too Low!!");
+                    }
+                }        
+            }
         }
-
     }
 }
 
