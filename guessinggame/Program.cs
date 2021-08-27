@@ -1,7 +1,7 @@
 ﻿// The program should be updated to...
 
-// Give the user four chances to guess the number.
-// Continue to display the success or failure messages as in phase 2
+// Display the number of the user's current guess in the prompt. For example, if the user has already guessed one time, the prommpt should say something like Your guess (2)>.
+// End the loop early if the user guesses the correct number.
 
 using System;
 
@@ -20,13 +20,20 @@ namespace guessinggame
             for (int i = 1; i < 5; i++)
             {
                 Console.WriteLine("Welcome to Guess the Secret Number! Do you want to play?");
-                Console.WriteLine("Pick a number between 1 and 100...");
+                if (i < 4)
+                {
+                    Console.WriteLine($"Guess #{i}: Pick a number between 1 and 100...");
+                } else 
+                {
+                    Console.WriteLine($"Final Guess: Pick a number between 1 and 100...");
+                }
                 //variable "num" is identified as an integer class... therefore must parse int console.readline since readline always comes back as a string
                 int num = int.Parse(Console.ReadLine()); 
             //comparing response to the secret number.... If the same answer then yay... if not the same.. wrong... 
                 if (num == secretNum) 
                 {
                     Console.WriteLine("Y A Y !!! You got it correct!");
+                    break;
                 } 
                 else 
                 {
