@@ -1,6 +1,10 @@
 ﻿// The program should be updated to...
 
-// Inform the user if their guess was too high or too low, when they guess incorrectly.
+// Prompt the user for a difficulty level before they are prompted to guess the number.
+// The difficulty level should determine how many guesses the user gets. The difficulty levels should be:
+// Easy - this gives the user eight guesses.
+// Medium - this gives the user six guesses.
+// Hard - this gives the user four guesses.
 
 using System;
 
@@ -14,9 +18,12 @@ namespace guessinggame
         static void Main(string[] args)
         {   
             int secretNum = new Random().Next(1,101);
-        
-            
-            for (int i = 4; i > 0; i--)
+            Console.WriteLine("How difficult would you like this to be? 1-Easy, 2-Medium, 3-Hard");
+            int difficultyLevel = int.Parse(Console.ReadLine()); 
+
+            int[] guesses = new int[] {10, 5, 3}; 
+
+            for (int i = guesses[(difficultyLevel - 1)]; i > 0; i--)
             {
                 Console.WriteLine("Welcome to Guess the Secret Number!");
                 if (i > 1)
